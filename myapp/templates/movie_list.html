@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <style>
+        .child {
+            border: 2px black solid;
+            border-radius: 10px;
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                {%if messages%}
+                {%for m in messages%}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>{{m}}</strong> You should check in on some of those fields below.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {%endfor%}
+                {%endif%}
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+
+
+    <div class="container mt-3 border border-2">
+        <div class="child">
+            <h1 class="text-center mt-5 ">MOVIE TABLE</h1>
+            <div class="row">
+
+                <div class="col-10 p-5 ">
+                    <div class="w-100 d-flex justify-content-end">
+                        <a href="{%url 'movie-add'%}" class="btn btn-primary">add</a>
+                    </div>
+                    <table class="table ">
+                        <tr>
+                            <th>Tiltle</th>
+                            <th>Genre</th>
+                            <th>languge</th>
+                            <th>year</th>
+                            <th>run time</th>
+                            <th>director</th>
+                            <th>delete</th>
+                            <th>detail</th>
+                            <th>update</th>
+                        </tr>
+
+                        {%for m in movies%}
+
+                        <tr>
+                            <td>{{m.title}}</td>
+                            <td>{{m.genre}}</td>
+                            <td>{{m.language}}</td>
+                            <td>{{m.year}}</td>
+                            <td>{{m.run_time}}</td>
+                            <td>{{m.director}}</td>
+                            <td>
+                                <a href="{%url 'movie-delete' m.id %}">remove</a>
+
+                            </td>
+
+                            <td>
+                                <a href="{%url 'movie-detail' m.id %}">detail</a>
+                            </td>
+                            <td>
+                                <a href="{%url 'movie-update' m.id %}">update</a>
+                            </td>
+                        </tr>
+                        {%endfor%}
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

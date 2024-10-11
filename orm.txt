@@ -1,0 +1,59 @@
+=====ORM Query for craeting a new object
+
+>ModelName.objects.create(fields=value1,fields2=value2,fields3=value3)
+
+>Movie.objects.create(
+
+    title="arm",
+    genre="Action",
+    language="malayalam",
+    year="2024",
+    run_time=150
+)
+
+======ORM Query for fetching all records===
+
+>qs=Modelname.objects.all()
+
+>qs=Movies.objects.all()
+
+
+
+
+======ORM Query for fetching a specific record
+
+>qs=Movie.objects.get(id=1)
+
+
+
+
+======ORM Query for filtring records
+
+>qs=ModelName.objects.filter(field=value,field=value)
+
+>comedy_movies=Movies.object.filter(genre=comedy)
+
+
+
+======ORM Query for updating records
+>comedy_movies=Movies.object.filter(id=2).update(run_time=180,year=2020)
+
+
+
+======ORM Query for deleting records
+>comedy_movies=Movies.object.filter(id=2).delete()
+
+
+
+=======field lookups
+
+>gt
+
+<lt
+
+>=gte
+
+<=lte
+
+
+qs=Movie.objects.filter(run_time__gt=150,run_time__lt=200)
